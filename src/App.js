@@ -6,6 +6,7 @@ import NotFound from './components/NotFound';
 import {fire} from './lib/firebase'
 import Vote from './components/Vote';
 import Question from './components/Question';
+import Thalamus from "./components/Thalamus";
 import Pending from './components/Pending';
 import Lobby from './components/Lobby';
 import Voted from './components/Voted';
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/lobby" element={<Lobby />} ></Route>
         <Route exact path="/pending" element={<Pending />} ></Route>
         <Route exact path="/voted" element={<Voted />} ></Route>
+        <Route exact path="/Thalamus/:team" element={<Thalamus />}></Route>
         <Route component={NotFound}></Route>
       </Routes>
     </BrowserRouter>
