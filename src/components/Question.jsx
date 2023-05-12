@@ -106,7 +106,9 @@ const Question = () => {
             v[Number(team)] = true;
 
             window.localStorage.setItem('voted', v);
-            navigate('/voted')
+
+            
+            navigate('/voted');
         }
         else{
             setIndex(index+1);

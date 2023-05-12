@@ -27,6 +27,7 @@ const StyledVoted = styled.div`
 `;
 
 const Voted = () => {
+    
     return (
         
         <StyledVoted>
