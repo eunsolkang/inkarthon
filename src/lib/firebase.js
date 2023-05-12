@@ -19,14 +19,22 @@ const firebaseConfig = {
   appId: "1:790929260071:web:fa7446c32983f8ec40d802"
 };
 
+export const getPending = () => {
+    return database.ref('/isPending').once('value')
+}
+
+
 export const getTeamList = () => {
     return database.ref('/teams').once('value')
 }
 
-export const updateScore = (teamIdx, i, data) => {
-    return database.ref(`/teams/${teamIdx}/`).update(data);
+export const updateScore = (teamIdx, data) => {
+    return database.ref(`/teams/${teamIdx}/scores`).update(data);
 }
 
+export const getScore = (teamIdx) => {
+    return database.ref(`/teams/${teamIdx}/scores`).once('value')
+}
 
 export const fire = () => {
     console.log("is work?")

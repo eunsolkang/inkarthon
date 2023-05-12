@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import { StyledTitle } from "./Vote";
+import useTeam from "../hooks/useTeams";
+import { useNavigate } from "react-router-dom";
 
 const StyledPending = styled.div`
     padding: 45px 20px;
@@ -23,6 +25,13 @@ const StyledPending = styled.div`
 `;
 
 const Pending = () => {
+    const {teams, isPending} = useTeam(); 
+    const navigate = useNavigate();
+    console.log(isPending)
+    if(isPending){
+        navigate('/lobby')
+    }
+    
     return (
         <StyledPending>
         <StyledTitle>인커톤 2023</StyledTitle>

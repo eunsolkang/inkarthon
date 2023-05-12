@@ -3,7 +3,8 @@ import { styled } from "styled-components"
 import useTeam from "../hooks/useTeams";
 import { StyledTitle } from "./Vote";
 import { Dimmer, Loader } from "semantic-ui-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getScore, updateScore } from "../lib/firebase";
 const questions = [
    {
      text: "활용성이 높은가요?",
@@ -84,8 +85,37 @@ const Question = () => {
     const teamData = teams[team];
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
+    const [develop, setDevelop] = useState(0);
+    const [design, setDesign] = useState(0)
+    const [plan, setPlan] = useState(0);
     
-    if(teams.length === 0){
+    const handleScore = async() =>{
+        //투표종료
+        const voted = window.localStorage.getItem('voted');
+        const v = voted ? voted.split(',') : [];
+        
+        v[Number(team)] = true;
+
+        window.localStorage.setItem('voted', v);
+
+        const value = await getScore(team);
+        const score = value.val();
+        
+        const newScore = {
+            develop : score.develop + develop,
+            design : score.design + design,
+            plan : score.plan + plan,
+        }
+
+        await updateScore(team, newScore);
+        navigate('/voted');
+    }
+    useEffect(() =>{
+        if(index === 7){
+            handleScore();    
+        }
+    }, [index])
+    if(teams.length === 0 || index > 6){
         return (
             <StyledQuestion>
                 <Dimmer active>
@@ -97,22 +127,17 @@ const Question = () => {
         )
     }
 
-    const onClickScore = (score) => {
-        if(index === 6){
-            //투표종료
-            const voted = window.localStorage.getItem('voted');
-            const v = voted ? voted.split(',') : [];
-            
-            v[Number(team)] = true;
-
-            window.localStorage.setItem('voted', v);
-
-            
-            navigate('/voted');
-        }
-        else{
+    const onClickScore = async(score) => {
             setIndex(index+1);
-        }
+            if(questions[index].type === 'develop'){
+                setDevelop(develop+1);
+            }
+            else if(questions[index].type === 'design'){
+                setDesign(design+1);
+            }
+            else if(questions[index].type === 'plan'){
+                setPlan(plan+1);
+            }
         
     }
 

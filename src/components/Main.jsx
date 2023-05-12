@@ -75,11 +75,23 @@ const StyledMain = styled.div`
 
 const Main = () => {
     
-    const {teams} = useTeam(); 
+    const {teams, isPending} = useTeam(); 
     const navigate = useNavigate();
     const voted = window.localStorage.getItem('voted');
+    const user = window.localStorage.getItem('name');
+    const userTeam = window.localStorage.getItem('team');
     const v = voted ? voted.split(',') : [false, false, false, false, false, false, false];
-
+    console.log(isPending)
+    if(!user){
+        navigate('/login')
+    }
+    
+    if(v.reduce((acc, vt) => vt === 'true'  ? acc + 1 : acc, 0) >= 6){
+        navigate('/pending')
+    }
+    if(isPending){
+        navigate('/lobby')
+    }
     const teamList = teams.map((team, i) => {
         const {name} = team;
         if(i % 2 === 0){
@@ -109,6 +121,10 @@ const Main = () => {
     });
 
     const onClickTeam = (idx) => {
+        if(Number(userTeam) === idx){
+            alert('자신의 팀은 투표할 수 없습니다!');
+            return;
+        }
         if(v[idx] === 'true'){
             alert('이미 투표한 팀입니다!');
         }
