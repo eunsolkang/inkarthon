@@ -27,10 +27,8 @@ const Login = () => {
 
     return (
         <StyledLogin>
-            <div className="loginTitle">2023</div>
-            <div className="loginTitle">인터페이스</div>
-            <div className="loginTitle">해커톤</div>
-
+            <div className="loginTitle">인커톤 2023</div>
+            
             <InputInfo name="name" InputSubject={"ㅁㄴㅇ"} onChangeInput={onChangeInput}>
 
             </InputInfo>

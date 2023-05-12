@@ -13,9 +13,9 @@ const StyledButton=styled.div`
     font-size: 40px;
 `
 
-const NextButton=({children})=>{
+const NextButton=({children, onClickLogin})=>{
     return(
-        <StyledButton>
+        <StyledButton onClick={onClickLogin}>
             {children}
         </StyledButton>
     )
