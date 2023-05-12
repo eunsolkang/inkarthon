@@ -20,8 +20,9 @@ const StyledMain = styled.div`
         line-height: 32px;
     }
     .team-box:nth-child(even){
-        
     }
+
+    
 `
 
 const Main = () => {
