@@ -20,13 +20,21 @@ const StyledLogin= styled.div`
 `
 
 const Login = () => {
+    const onChangeInput = (e) => {
+        const {name, value} = e.target;
+        console.log(name, value);
+    }
+
     return (
         <StyledLogin>
             <div className="loginTitle">2023</div>
             <div className="loginTitle">인터페이스</div>
             <div className="loginTitle">해커톤</div>
 
-            <InputInfo InputSubject={"ㅁㄴㅇ"} InputContent={"asdf"}>
+            <InputInfo name="name" InputSubject={"ㅁㄴㅇ"} onChangeInput={onChangeInput}>
+
+            </InputInfo>
+            <InputInfo name="team" InputSubject={"ㅁㄴㅇ"} onChangeInput={onChangeInput}>
 
             </InputInfo>
 

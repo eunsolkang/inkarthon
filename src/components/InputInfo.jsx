@@ -16,15 +16,13 @@ const StyledInputInfo=styled.div`
     }
 `
 
-const InputInfo=({InputSubject,InputContent})=>{
+const InputInfo=({InputSubject, onChangeInput, name})=>{
     return(
         <StyledInputInfo>
             <div className="InputSubject">
                 {InputSubject}
             </div>
-            <div className="InputContent">
-                {InputContent}
-            </div>
+            <input name={name} onChange={onChangeInput} className="InputContent"></input>
         </StyledInputInfo>
     )
 }
