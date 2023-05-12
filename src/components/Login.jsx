@@ -5,6 +5,7 @@ import Main from "./Main";
 import { getTeamList } from "../lib/firebase";
 import { useEffect, useState } from "react";
 import InputTeam from "./InputTeam";
+import { useNavigate } from "react-router-dom";
 
 const StyledLogin= styled.div`
     background-color: blue;
@@ -27,6 +28,7 @@ const Login = () => {
     const [teams, setTeams] = useState([]);
     const [name, setName] = useState();
     const [team, setTeam] = useState();
+    const navigator = useNavigate();
     
     const handleTeamList = async() => {
         const res = await getTeamList();
@@ -66,17 +68,25 @@ const Login = () => {
 
     const ButtonClick = (n) => {
         let flag=0;
+        let s;
+        let t;
         for (let i = 0; i < 7; i++) {
             if (teams[i].name === team) {
                 for (let j=0;j<4;j++){
                     if(teams[i].members[j].name===name){
                         flag=1;
+                        s = name
+                        t = i;
                     }
                     // console.log(teams[i].name,teams[i].members[j]);
                 }
             }
         }
-        if(flag===1)console.log(true);
+        if(flag===1){
+            window.localStorage.setItem('name', s);
+            window.localStorage.setItem('team', t);
+            navigator('/');
+        }
         else showAlert();
         
     }
