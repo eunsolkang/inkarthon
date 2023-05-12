@@ -23,12 +23,17 @@ export const getTeamList = () => {
     return database.ref('/teams').once('value')
 }
 
+export const updateScore = (teamIdx, i, data) => {
+    return database.ref(`/teams/${teamIdx}/`).update(data);
+}
+
+
 export const fire = () => {
     console.log("is work?")
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
     }
      database = firebase.database();
-     const messaging = firebase.messaging();
-     console.log(messaging);
+    //  const messaging = firebase.messaging();
+    //  console.log(messaging);
 }
