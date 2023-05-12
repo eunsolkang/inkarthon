@@ -13,6 +13,6 @@ code {
 }
 
 * {
-  font-family: 'NeoDunggeunmo'; 
+  font-family: 'NeoDunggeunmo' !important; 
 }
 
