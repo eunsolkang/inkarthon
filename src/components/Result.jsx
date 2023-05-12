@@ -92,6 +92,7 @@ const Result = () => {
     }
     const {name, members,prise} = teamData;
     return (
+
         <StyledVote ref={captureRef}>
             <StyledTitle>2023<br/>인터페이스<br/>해커톤</StyledTitle>
             <StylePrise>{prise}</StylePrise>

@@ -4,7 +4,7 @@ const StyledButton=styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 130px;
+    margin-top: 110px;
     background-color: #4A5CFF;
     color: white;
     width: 214px;
@@ -13,9 +13,10 @@ const StyledButton=styled.div`
     font-size: 40px;
 `
 
-const NextButton=({children, onClickLogin})=>{
+
+const NextButton=({children, onClickButton})=>{
     return(
-        <StyledButton onClick={onClickLogin}>
+        <StyledButton onClick={onClickButton}>
             {children}
         </StyledButton>
     )
