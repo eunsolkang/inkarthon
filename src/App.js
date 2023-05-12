@@ -3,9 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Main from './components/Main';
 import NotFound from './components/NotFound';
-
+import {fire} from './lib/firebase'
 
 function App() {
+  fire();
   return (
     <BrowserRouter>
       <Routes>

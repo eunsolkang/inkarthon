@@ -34,8 +34,6 @@ const Login = () => {
             VOTE
             </NextButton>
         </StyledLogin>
-
-        
     )
 }
 export default Login;
