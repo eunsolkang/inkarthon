@@ -6,7 +6,6 @@ import NextButton from "./NextButton";
 
 
 export const StyledTitle = styled.div`
-    
     font-size: 50px;
     line-height: 50px;;
     color: white;
