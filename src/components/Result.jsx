@@ -1,9 +1,16 @@
 import styled  from "styled-components"
-import { StyledTitle } from "./Vote"
 import { Dimmer, Loader } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom"
 import useTeam from "../hooks/useTeams"
+
+const StyledTitle = styled.div`
+width: 300px;
+height: 200px;
+    font-size: 50px;
+    line-height: 50px;;
+    color: white;
+`
+
 
 const StyledVote = styled.div`
     height: 100vh;
@@ -17,9 +24,8 @@ const StyledVote = styled.div`
 `
 
 const StyleTeam= styled.div`
-margin-top:50px;
 width: 300px;
-height: 200px;
+height: 100px;
 font-size: 50px;
 `
 const StyleMember = styled.div`
@@ -31,11 +37,9 @@ font-size: 30px;
 padding:0;
 `
 const StylePrise = styled.div`
-width: 300px;
-height: 50px;
-font-size: 50px;
-display:flex;
-flex-direction:column;
+width: 500px;
+height: 100px;
+font-size: 100px;
 `
 const StyledP = styled.p`
 width: 500px;
@@ -47,8 +51,7 @@ margin:0;
 `
 
 
-const Thalamus = () =>{
-    const navigate = useNavigate();
+const Result = () =>{
     const {team} = useParams();
     const {teams} = useTeam();
     const teamData = teams[team];
@@ -63,21 +66,18 @@ const Thalamus = () =>{
             </StyledVote>
         )
     }
-    const toResult = () =>{
-        navigate(`/Result/${team}`)
-    }
     const {name, members,prise} = teamData;
     return (
         <StyledVote>
-            <StyledTitle>인커톤 2023</StyledTitle>
+            <StyledTitle>2023<br/>인터페이스<br/>해커톤</StyledTitle>
+            <StylePrise>{prise}</StylePrise>
             <StyleTeam><StyledP>{Number(team)+1}조</StyledP><StyledP>{name}</StyledP></StyleTeam>
             {members?.map(element=>{
                 const {name,position} = element;
                 return (<StyleMember><StyledP>{position}</StyledP><StyledP>{name}</StyledP></StyleMember>)
             })}
-            <StylePrise onClick={toResult}><StyledP >🥇</StyledP><StyledP>{prise}</StyledP></StylePrise>
         </StyledVote>
     )
 }
 
-export default Thalamus
+export default Result
