@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 import useTeam from "../hooks/useTeams"
 
 const StyledVote = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     padding: 45px 0px;
     background-color: rgb(35, 57, 255);
     color: white;
@@ -19,7 +19,7 @@ const StyledVote = styled.div`
 const StyleTeam= styled.div`
 margin-top:50px;
 width: 300px;
-height: 200px;
+height: 150px;
 font-size: 50px;
 `
 const StyleMember = styled.div`
@@ -34,15 +34,15 @@ const StylePrise = styled.div`
 width: 300px;
 height: 50px;
 font-size: 50px;
+margin-top: 10px;
 display:flex;
 flex-direction:column;
 `
 const StyledP = styled.p`
-width: 500px;
+width: 300px;
 height: 50px;
 display:flex;
 line-height: 50px;
-justify-contents:center;
 margin:0;
 `
 
@@ -73,7 +73,7 @@ const Thalamus = () =>{
             <StyleTeam><StyledP>{Number(team)+1}조</StyledP><StyledP>{name}</StyledP></StyleTeam>
             {members?.map(element=>{
                 const {name,position} = element;
-                return (<StyleMember><StyledP>{position}</StyledP><StyledP>{name}</StyledP></StyleMember>)
+                return (<StyleMember key={name}><StyledP>{position}</StyledP><StyledP>{name}</StyledP></StyleMember>)
             })}
             <StylePrise onClick={toResult}><StyledP >🥇</StyledP><StyledP>{prise}</StyledP></StylePrise>
         </StyledVote>
