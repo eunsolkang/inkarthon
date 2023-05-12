@@ -13,6 +13,7 @@ const StyledButton=styled.div`
     font-size: 40px;
 `
 
+
 const NextButton=({children, onClickButton})=>{
     return(
         <StyledButton onClick={onClickButton}>

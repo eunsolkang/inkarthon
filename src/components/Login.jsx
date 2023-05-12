@@ -89,6 +89,7 @@ const Login = () => {
 
             <InputInfo name="name" InputSubject={"이름"}   onChangeInput={(e) => setName(e.target.value)}>
 
+
             </InputInfo>
             <InputTeam name="team" InputSubject={"속한 조"} handleSelectOption={(e)=>setTeam(e.target.value)}>
             
