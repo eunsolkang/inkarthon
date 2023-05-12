@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { getTeamList } from "../lib/firebase";
 import { Dimmer, Loader } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useTeam from "../hooks/useTeams";
 
 const StyledMain = styled.div`
@@ -74,35 +74,48 @@ const StyledMain = styled.div`
 `
 
 const Main = () => {
-    const {teams} = useTeam();
+    
+    const {teams} = useTeam(); 
+    const navigate = useNavigate();
+    const voted = window.localStorage.getItem('voted');
+    const v = voted ? voted.split(',') : [false, false, false, false, false, false, false];
 
     const teamList = teams.map((team, i) => {
         const {name} = team;
         if(i % 2 === 0){
             return (
-                <Link className="team-container" to={`/vote/${i}`}>
+                <div className="team-container" onClick={() => onClickTeam(i)}>
                     <div className="team-box" key={`${i}_teamList`}>
                         {i+1}. {name}
                     </div>
                     <span>
-                        완
+                        {v[i] === 'true' ? '완' : ''}
                     </span>
-                </Link>
+                </div>
             )
         }else{
             return (
-                <Link className="team-container"  to={`/vote/${i}`}>
+                <div className="team-container"  onClick={() => onClickTeam(i)}>
                     <span>
-                        완
+                        {v[i] === 'true' ? '완' : ''}
                     </span>
                     <div className="team-box" key={`${i}_teamList`}>
                         {i+1}. {name}
                     </div>
-                </Link>
+                </div>
             )
         }
         
-    })
+    });
+
+    const onClickTeam = (idx) => {
+        if(v[idx] === 'true'){
+            alert('이미 투표한 팀입니다!');
+        }
+        else{
+            navigate(`/vote/${idx}`)
+        }
+    }
 
     if(teams.length === 0){
         return (

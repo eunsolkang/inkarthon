@@ -65,7 +65,7 @@ const StyledMember = styled.div`
     }
 `
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
     font-weight: 400;
     font-size: 40px;
     background-color: #4A5CFF;
@@ -110,7 +110,7 @@ const Vote = () => {
     return (
         <StyledVote>
             <StyledTitle>인커톤 2023</StyledTitle>
-            <StyledTeam>{Number(team+1)}조</StyledTeam>
+            <StyledTeam>{Number(team)+1}조</StyledTeam>
             <StyledTitle>{teamData.name}조</StyledTitle>
             <div className="member-list">
                 {memberList}
