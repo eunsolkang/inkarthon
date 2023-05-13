@@ -28,15 +28,9 @@ const InputTeam=({InputSubject, handleSelectOption, name})=>{
             <div className="InputSubject">
                 {InputSubject}
             </div>            
-            <select className="InputContent"  onChange={handleSelectOption}>
-                <option value="졸립조">졸립조</option>
-                <option value="뻥이조">뻥이조</option>
-                <option value="응애조">응애조</option>
-                <option value="몰빵사조">몰빵사조</option>
-                <option value="인사하조">인사하조</option>
-                <option value="육사시미">육사시미</option>
-                <option value="정래네">정래네</option>
-            </select>
+            <input className="InputContent"  onChange={handleSelectOption}>
+                
+            </input>
         </StyledInputTeam>
     )
 }
