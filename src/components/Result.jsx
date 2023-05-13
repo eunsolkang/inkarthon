@@ -10,8 +10,7 @@ import insta from "../image/insta.png"
 
 
 const StyledTitle = styled.div`
-width: 300px;
-height: 200px;
+    margin-bottom: 2rem;
     font-size: 50px;
     line-height: 50px;;
     color: white;
@@ -20,7 +19,8 @@ height: 200px;
 
 const StyledVote = styled.div`
 min-height: 100vh;
-    padding: 45px 0px;
+    padding: 45px 25px;
+    background-color: rgb(35, 57, 255);
     background-image: url(${backPrice});
     background-repeat:no-repeat;
     background-size: cover;
@@ -28,40 +28,55 @@ min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content:center ;
-    align-items: center;
+    align-items: flex-start;
+    position: relative;
+    .diagonal3 {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        bottom: 0;
+        right: 0;
+        border-bottom: 40px solid black;
+        border-right: 40px solid rgba(0,0,0,0);
+        
+        transform: scale(10) rotate(-90deg)!important; 
+        
+    }
 `
 
 const StyleTeam= styled.div`
-width: 300px;
-height: 100px;
 font-size: 50px;
+margin-bottom: 1rem;
 `
 const StyleMember = styled.div`
 display:flex;
+width: 70%;
+min-width: 217px;
 justify-content:space-between;
-width: 300px;
-height: 50px;
 font-size: 30px;
 padding:0;
 `
 const StylePrise = styled.div`
-width: 300px;
-height: 100px;
 font-size: 70px;
+line-height: 70px;;
+color: gold;
+margin-bottom: 1rem;
 `
 const StyledP = styled.p`
-width: 300px;
-height: 50px;
+text-align: left;
 display:flex;
 line-height: 50px;
 margin:0;
+span{
+    color: gold;
+}
 `
 const StyleBtn = styled.button`
     background-color:transparent;
     all: unset;
     position: absolute;
-  bottom: 0;
-  left: 0;
+    bottom: 10px;
+    left: 10px;
 `
 
 const Result = () => {
@@ -101,7 +116,7 @@ const Result = () => {
                 const {name,position} = element;
                 return (<StyleMember key={name}><StyledP>{position}</StyledP><StyledP>{name}</StyledP></StyleMember>)
             })}
-            <StyleBtn><img onClick={BtnClick} src={downloadbtn}/><img src={insta}/></StyleBtn>
+            <StyleBtn><img onClick={BtnClick} src={downloadbtn}/></StyleBtn>
         </StyledVote>
     )
 }

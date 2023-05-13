@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { StyledButton, StyledTitle } from "./Vote";
+import { Link, useNavigate } from "react-router-dom";
 
 const StyledLobby = styled.div`
     padding: 45px 20px;
@@ -19,6 +20,11 @@ const StyledLobby = styled.div`
 `;
 
 const Lobby = () => {
+    const navigator = useNavigate();
+    const team = window.localStorage.getItem('team')
+    if(!team){
+        navigator('/login')
+    }
     return (
         <StyledLobby>
             <StyledTitle>인커톤 2023</StyledTitle>
@@ -27,9 +33,11 @@ const Lobby = () => {
                 투표가<br/>
                 끝났어요<br/>
             </div>
+            <Link to={`/Thalamus/${team}/`}>
             <StyledButton>
                 우리 조 결과 확인하기
             </StyledButton>
+            </Link>
         </StyledLobby>
     )
 }

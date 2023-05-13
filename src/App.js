@@ -11,6 +11,7 @@ import Result from "./components/Result";
 import Pending from './components/Pending';
 import Lobby from './components/Lobby';
 import Voted from './components/Voted';
+import Console from './components/Console';
 
 function App() {
   fire();
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/lobby" element={<Lobby />} ></Route>
         <Route exact path="/pending" element={<Pending />} ></Route>
         <Route exact path="/voted" element={<Voted />} ></Route>
+        <Route exact path="/console" element={<Console />} ></Route>
         <Route exact path="/Thalamus/:team" element={<Thalamus />}></Route>
         <Route exact path="/Result/:team" element={<Result />}></Route>
         <Route component={NotFound}></Route>

@@ -4,7 +4,7 @@ import useTeam from "../hooks/useTeams";
 import { Dimmer, Loader } from "semantic-ui-react";
 import NextButton from "./NextButton";
 
-
+const profiles = ['😊', '🤔', '😄', '😆']
 export const StyledTitle = styled.div`
     font-size: 50px;
     line-height: 50px;;
@@ -51,6 +51,7 @@ const StyledVote = styled.div`
     }
 `
 
+
 const StyledMember = styled.div`
     .profile{
         width: 100px;
@@ -58,6 +59,13 @@ const StyledMember = styled.div`
         background-color: white;
         border-radius: 100%;
         margin: 1rem 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 60px;
+        line-height: 60px;
+        box-sizing: border-box;
+        padding-top: 1rem;
     }
     .name{
         text-align: center;
@@ -92,13 +100,13 @@ const Vote = () => {
         )
     }
 
-    const memberList = teamData.members.map(member => {
+    const memberList = teamData.members.map((member, i) => {
         const {name, position} = member;
 
         return (
             <StyledMember>
                 <div className="profile">
-                    
+                    {profiles[i]}
                 </div>
                 <div className="name">
                     {name}, {position}
@@ -110,7 +118,7 @@ const Vote = () => {
         <StyledVote>
             <StyledTitle>인커톤 2023</StyledTitle>
             <StyledTeam>{Number(team)+1}조</StyledTeam>
-            <StyledTitle>{teamData.name}조</StyledTitle>
+            <StyledTitle>{teamData.name}</StyledTitle>
             <div className="member-list">
                 {memberList}
             </div>

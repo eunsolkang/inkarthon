@@ -70,8 +70,10 @@ const Login = () => {
         let flag=0;
         let s;
         let t;
+        console.log(team)
         for (let i = 0; i < 7; i++) {
             if (teams[i].name === team) {
+                
                 for (let j=0;j<4;j++){
                     if(teams[i].members[j].name===name){
                         flag=1;
@@ -86,8 +88,11 @@ const Login = () => {
             window.localStorage.setItem('name', s);
             window.localStorage.setItem('team', t);
             navigator('/');
+            return;
         }
-        else showAlert();
+        else {
+            showAlert();
+        }
         
     }
     
